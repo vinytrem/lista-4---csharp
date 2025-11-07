@@ -1,0 +1,33 @@
+using System;
+class Passagem {
+    static void Main() {
+        Console.WriteLine("1 - Morros (R$ 120,00)");
+        Console.WriteLine("2 - Barreirinhas (R$ 200,00)");
+        Console.WriteLine("3 - Bacabeira (R$ 50,00)");
+        Console.WriteLine("4 - Rosário (R$ 80,00)");
+        Console.Write("\nInforme o código do destino: ");
+        int codigo = int.Parse(Console.ReadLine());
+
+        double preco = 0;
+        switch (codigo) {
+            case 1: preco = 120.0; break;
+            case 2: preco = 200.0; break;
+            case 3: preco = 50.0; break;
+            case 4: preco = 80.0; break;
+            default:
+                Console.WriteLine("Destino inválido!");
+                return;
+        }
+
+        Console.Write("A passagem é de ida e volta? (s/n): ");
+        string resposta = Console.ReadLine().Trim().ToLower();
+
+        if (resposta == "s") {
+            preco = preco * 2 * 0.9; // ida e volta com 10% de desconto
+        } else {
+            preco = preco * 1; // apenas ida
+        }
+
+        Console.WriteLine($"\nValor total a pagar: R$ {preco:F2}");
+    }
+}
